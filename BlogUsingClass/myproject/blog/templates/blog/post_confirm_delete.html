@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Delete Page {% endblock %}
+
+{% block content %}
+<h1 class="text-center text-info bg-danger">welcome Delete Page </h1>
+<div class="row">
+    <div class="col-8 offset-2">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1>{{item.title}}</h1>
+            <img class="img-fluid" src="{{ item.image.url }}">
+            <input type="submit" name="submit" value="Delete" class="btn btn-outline-danger w-100 mt-md-5 py-2">
+        </form>
+        <a href="{% url 'post_list' %}" class="btn btn-outline-success form-control mt-1">Cancel</a>
+    </div>
+
+</div>
+
+{% endblock %}

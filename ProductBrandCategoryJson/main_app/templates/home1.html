@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+
+Home Page
+{% endblock title %}
+{% block content %}
+<h1 class="text-center bg-warning py-2">Home Page</h1>
+<div class="row">
+    <div class="col-8 offset-2">
+
+        Enter your name: <input type="text">
+
+        <p>Enter your name in the input field above. It will change background color on keydown and keyup.</p>
+
+
+    </div>
+</div>
+
+{% endblock content %}
+{% block js %}
+<script>
+   
+    $(document).ready(function () {
+        console.log("working");
+        $.getJSON("/static/countries.json", function(json) {
+            alert('its working json country');
+});
+
+
+    });
+
+</script>
+{% endblock js %}

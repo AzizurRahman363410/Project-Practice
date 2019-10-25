@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Detail Page {% endblock %}
+
+{% block content %}
+<h1 class="text-center text-info bg-warning">welcome Detail Page </h1>
+<div class="row">
+    <div class="col-4">
+        <h4>{{post_detail.title}}</h4>
+        <img class = "img-fluid" src="{{post_detail.image.url}}" alt="">
+        <p>{{post_detail.content}}</p>
+        <small>{{post_detail.timestamp}}</small>
+    </div>
+</div>
+
+{% endblock %}

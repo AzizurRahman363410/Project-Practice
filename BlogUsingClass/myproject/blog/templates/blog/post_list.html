@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home Page {% endblock %}
+
+{% block content %}
+<h1 class="text-center text-success">welcome Home Page </h1>
+<div class="row">
+    {% for post in post_list %}
+    <div class="col-4">
+        <a href="{% url 'post_detail' post.pk %}"><h4>{{post.title}}</h4></a>
+        <img class="img-fluid"
+             src="{% if post.image %}{{post.image.url}}{% else %}{% static 'img/kids1.jpeg' %}{% endif %}" alt="">
+        <p>{{post.content}}</p>
+        <small>{{post.timestamp}}</small>
+        <br>
+        <a href="{% url 'post_update' post.pk %}" class="btn btn-primary">Update</a>
+        <a href="{% url 'post_delete' post.pk %}" class="btn btn-danger">Delete</a>
+    </div>
+    {% endfor %}
+</div>
+
+<!--pagination begin -->
+
+<!--pagination end-->
+
+
+{% endblock %}

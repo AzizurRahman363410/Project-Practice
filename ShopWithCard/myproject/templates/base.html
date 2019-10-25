@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>{% block title %}CDN Starter Template | Bootstrap 4 + Font Awesome 5 {% endblock %}</title>
+    <!-- favicon icon  -->
+    <link href="{% static 'img/favcon.png' %}" rel="icon" type="image/x-icon"/>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <!-- Custom Stylesheet after this line -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+      .col-md-3
+      {
+      display: inline-block;
+      margin-left:-4px;
+      }
+      .carousel-indicators .active {
+      background-color: red;
+      }
+      .col-md-3 img{
+      height: 242px;
+      }
+      body .carousel-indicator li{
+      background-color: #00ffff;
+      }
+      .carousel-indicator{
+      background-color: #00ffff;
+
+      }
+      body .carousel-indicators{
+      bottom: 0;
+      }
+      body .carousel-control-prev-icon,
+      body .carousel-control-next-icon{
+      background-color: blue;
+      }
+      .carousel-control-prev,
+      .carousel-control-next{
+      top: auto;
+      bottom: auto;
+      padding-top: 220px;
+      }
+      body .no-padding{
+      padding-left: 0,
+      padding-right: 0;
+      }
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="">Shop</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">About Us </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link" href="{% url 'tracker' %}">Tracker</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Create Product</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Profile1
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="">Change Password</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="">Logout</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Profile2
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="">SignUp</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="">Login</a>
+                    <a class="dropdown-item" href="">Password_Reset</a>
+                </div>
+            </li>
+        </ul>
+        <form method="post" class="form-inline my-2 my-lg-0" action="">
+            {% csrf_token %}
+            <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search"
+                   value="{{query}}">
+            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search"></input>
+        </form>
+        <button type="button" class="btn btn-secondary mx-2" id="popcart" data-container="body" data-toggle="popover"
+                data-placement="bottom" data-html="true" data-content="Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus.">
+
+            Cart(<span id="cart">0</span>)
+        </button>
+    </div>
+</nav>
+<div class="container">
+    <!--    message-->
+    {% include '_message.html' %}
+    {% block content %}
+    {% endblock %}
+</div>
+<!-- Scripts -->
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+{% block js %}
+{% endblock %}
+</body>
+</html>

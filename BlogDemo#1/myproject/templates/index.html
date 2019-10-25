@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>CDN Starter Template | Bootstrap 4 + Font Awesome 5</title>
+    <!-- favicon icon  -->
+    <link href="{% static 'img/favcon.png'%}" rel="icon" type="image/x-icon"/>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" href=" https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <!-- Custom Stylesheet after this line -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <a class="navbar-brand" href="/">Shopping Logo</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse myDIV" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/" id="home">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/?category=1">Book <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/?category=2">Man's Fashion</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/?category=3">Girl's Fashion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Dynamic Page Begain -->
+    <div class="row py-5">
+        {% for post in posts %}
+        <div class="col-md-4 blogpost">
+            <h5>{{post.title|truncatechars:20}}</h5>
+            <h6>Last updated: {{post.date_timeField}}</h6>
+            <h6>Category: <a href="/?category={{post.category.id}}">{{post.category}}</a></h6>
+            <p>{{post.discription|truncatechars:200}}</p>
+            <a class="link py-5" id="read" href="{% url 'post' pk=post.pk %}">Read More</a>
+            <!--            post/{{post.pk}}-->
+            <img class="py-4 " src="{{post.image.url}}" alt="">
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Dynamic Page End -->
+<footer class="bg-dark  text-center text-light py-3">
+    <div class="footer-copyright text-center">© 2018 Copyright:
+    <a href="#" class="text-light pb-5"> A R SHAKIL FOUNDATION</a>
+  </div>
+</footer>
+</div>
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+<script>
+<script>
+    $('#home').addClass('active');
+
+</script>
+</script>
+</body>
+</html>

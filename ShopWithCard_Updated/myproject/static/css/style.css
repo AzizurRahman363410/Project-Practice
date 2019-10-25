@@ -1,0 +1,45 @@
+
+html{
+      background:#88768D;
+}
+          .col-md-3
+          {
+          height:537px;
+          display: inline-block;
+          margin-left:-4px;
+          }
+          .carousel-indicators .active {
+          background-color: blue;
+            }
+          .col-md-3 img{
+          object-fit: cover;
+          width:255px;
+          height:295px;
+          }
+          body .carousel-indicator li{
+          background-color: blue;
+          }
+          body .carousel-indicators{
+          bottom: 0;
+          }
+          body .carousel-control-prev-icon,
+          body .carousel-control-next-icon{
+          background-color: blue;
+          }
+           body .no-padding{
+           padding-left: 0,
+           padding-right: 0;
+           }
+.galery{
+           text-align:center;
+           }
+body .carousel-control-prev-icon, body .carousel-control-next-icon {
+           background-color:#17a2b8;
+           font-color:#343a40;
+        }
+.carousel-control-next-icon, .carousel-control-prev-icon {
+      width: 39px;
+      height: 37px;
+      top: -100px;
+      position: relative;
+}

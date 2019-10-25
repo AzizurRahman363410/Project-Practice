@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Home Page{% endblock title %}
+
+
+{% block content %}
+<h3 class="text-center bg-success text-white py-3 my-3 font-weight-bold">Indian All City And State</h3>
+<div class="row my-5">
+        <div class="col-4">
+                <select id="country" class="custom-select custom-select-lg mb-3 d-inline" ></select>
+        </div>
+        <div class="col-4">
+                <select id="state" class="custom-select custom-select-lg mb-3 d-inline" ></select>
+        </div>
+        <div class="col-4">
+                <select id="district" class="custom-select custom-select-lg mb-3" ></select>  
+        </div>  
+</div>
+
+{% endblock content %}
+
+
+{% block js %}
+<script>
+$(document).ready(function(){
+
+console.log("its working")
+var countryOptions;
+var stateOptions;
+var districtOptions;
+	$.getJSON('/static/countries.json',function(result){
+		$.each(result, function(i,country) {
+			//<option value='countrycode'>contryname</option>
+			countryOptions+="<option value='"
+			+country.code+
+			"'>"
+			+country.name+
+			"</option>";
+			 });
+			 $('#country').html(countryOptions);
+	});
+
+
+	$("#country").change(function(){
+	if($(this).val()=="IN"){
+			$.getJSON('/static/indianStates.json',function(result){
+			$.each(result, function(stateCode,stateName) {
+				//<option value='stateCode'>stateName</option>
+				stateOptions+="<option value='"
+				+stateCode+
+				"'>"
+				+stateName+
+				"</option>";
+				 });
+				 $('#state').html(stateOptions);
+			});
+		}
+	});
+
+	$("#state").change(function(){
+	if($(this).val()=="MH"){
+			$.getJSON('/static/MHDistricts.json',function(result){
+			$.each(result, function(i,district) {
+				//<option value='districtName'>districtName</option>
+				districtOptions+="<option value='"
+				+district.name+
+				"'>"
+				+district.name+
+				"</option>";
+				 });
+				 $('#district').html(districtOptions);
+			});
+		}
+	});
+
+});
+
+</script>
+{% endblock js %}

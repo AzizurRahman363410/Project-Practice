@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <h3 class="text-center py-3 btn-warning">Post Create Form</h3>
+      <form method="POST" id="post-form">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleInputEmail1">Title</label>
+          <input type="text" class="form-control" id="title" placeholder="Title" name="title">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Description</label>
+          <textarea class="form-control" id="description" placeholder="Description" name="description"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+    </div>
+  </div>
+  <div class="row my-4 posts">
+    {% for post in posts %}
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 class="mb-0">{{post.title}}</h3>
+          <p class="mb-auto">{{post.description}}</p>
+          <a class="btn btn-danger mx-0" href="{% url 'delete_post' post.id %}">delete</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+  console.log('its working ')
+  $(document).on('submit', '#post-form', function (e) {
+    e.preventDefault();
+    console.log('its working inside ')
+    var title = $("#title").val();
+    console.log(title)
+    $.ajax({
+      type: 'POST',
+      url: '/create_post/',
+      data: {
+        title: $('#title').val(),
+        description: $('#description').val(),
+        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+        action: 'post'
+      },
+
+      success: function (json) {
+        var delete_text = "delete"
+        document.getElementById("post-form").reset();
+        if (json.title != undefined && json.description != undefined) {
+          console.log('its working jason data', json)
+          $(".posts").prepend(`<div class="col-md-6"><div
+      class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <h3 class="mb-0">${json.title}</h3>
+        <p class="mb-auto">${json.description}</p>
+  
+        <a class="btn btn-danger mx-0" href="">delete</a>
+      </div>
+   </div>
+        </div>`)
+        }
+        else {
+          alert("field can't be empty")
+
+        }
+      },
+
+      error: function (xhr, errmsg, err) {
+        console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+      }
+    });
+  });
+ 
+</script>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home Page {% endblock %}
+
+{% block content %}
+<h1 class="text-center text-success">welcome Home Page </h1>
+{% for post in post_list %}
+<div class="row">
+    <div class="col-4" onclick="window.location='{% url 'detail' post.pk %}'">
+        <a href="{% url 'detail' post.pk %}"><h4>{{post.title}}</h4></a>
+        <img class = "img-fluid" src="{% if post.image %}{{post.image.url}}{% else %}{% static 'img/kids1.jpeg' %}{% endif %}" alt="">
+        <p>{{post.content}}</p>
+        <small>{{post.timestamp}}</small>
+        <br>
+        <a href="{% url 'update_post' post.pk %}" class="btn btn-primary">Update</a>
+        <a href="{% url 'delete_post' post.pk %}" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+{% endfor %}
+
+<!--pagination begin -->
+<div class="pagination mt-5">
+    <span class="step-links">
+        {% if post_list.has_previous %}
+            <a class="btn btn-outline-info" href="?page=1">&laquo; first</a>
+            <a class="btn btn-outline-success" href="?page={{ post_list.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ post_list.number }} of {{ post_list.paginator.num_pages }}
+        </span>
+
+        {% if post_list.has_next %}
+            <a class="btn btn-outline-success" href="?page={{ post_list.next_page_number }}">next</a>
+            <a class="btn btn-outline-info" href="?page={{ post_list.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+<!--pagination end-->
+
+
+{% endblock %}

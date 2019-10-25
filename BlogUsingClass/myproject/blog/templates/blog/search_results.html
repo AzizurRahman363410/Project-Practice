@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Search Page {% endblock %}
+
+{% block content %}
+<h1 class="text-center text-success">welcome Search Page </h1>
+<div class="row">
+{% for post in post_list %}
+    <div class="col-4">
+        <a href="{% url 'post_detail' post.pk %}"><h4>{{post.title}}</h4></a>
+        <img class = "img-fluid" src="{% if post.image %}{{post.image.url}}{% else %}{% static 'img/kids1.jpeg' %}{% endif %}" alt="">
+        <p>{{post.content}}</p>
+        <small>{{post.timestamp}}</small>
+    </div>
+{% endfor %}
+</div>
+<!--pagination begin -->
+
+<!--pagination end-->
+
+
+{% endblock %}

@@ -1,0 +1,130 @@
+
+[  
+   {  
+      "id":"1",
+      "name":"Samsung",
+      "parent_id":"0"
+   },
+   {  
+      "id":"2",
+      "name":"Sony",
+      "parent_id":"0"
+   },
+   {  
+      "id":"3",
+      "name":"Apple",
+      "parent_id":"0"
+   },
+
+
+   {  
+      "id":"4",
+      "name":"Mobiles & Accessories",
+      "parent_id":"1"
+   },
+   {  
+      "id":"5",
+      "name":"Home & Kitchen",
+      "parent_id":"1"
+   },
+
+
+
+   {  
+      "id":"6",
+      "name":"Computers",
+      "parent_id":"2"
+   },
+   {  
+      "id":"7",
+      "name":"Home Entertainment",
+      "parent_id":"2"
+   },
+
+
+
+   {  
+      "id":"8",
+      "name":"Phone",
+      "parent_id":"3"
+   },
+
+
+
+   {  
+      "id":"9",
+      "name":"Mobiles",
+      "parent_id":"4"
+   },
+   {  
+      "id":"10",
+      "name":"Tablets",
+      "parent_id":"4"
+   },
+   {  
+      "id":"11",
+      "name":"Mobile Headsets",
+      "parent_id":"4"
+   },
+
+
+
+   {  
+      "id":"12",
+      "name":"Refrigerators",
+      "parent_id":"5"
+   },
+   {  
+      "id":"13",
+      "name":"Air Conditioners",
+      "parent_id":"5"
+   },
+
+
+
+   {  
+      "id":"14",
+      "name":"Pen Drives",
+      "parent_id":"6"
+   },
+   {  
+      "id":"15",
+      "name":"Laptops",
+      "parent_id":"6"
+   },
+
+
+   {  
+      "id":"16",
+      "name":"TVs",
+      "parent_id":"7"
+   },
+   {  
+      "id":"17",
+      "name":"Home Theaters",
+      "parent_id":"7"
+   },
+   {  
+      "id":"18",
+      "name":"Speakers",
+      "parent_id":"7"
+   },
+
+   {  
+      "id":"19",
+      "name":"Iphone 5",
+      "parent_id":"8"
+   },
+   {  
+      "id":"20",
+      "name":"Iphone 6",
+      "parent_id":"8"
+   },
+   {  
+      "id":"21",
+      "name":"Iphone 7",
+      "parent_id":"8"
+   }
+
+
+]

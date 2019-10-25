@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Detail Page {% endblock %}
+
+{% block content %}
+<h1 class="text-center text-info bg-warning">welcome Detail Page </h1>
+<div class="row">
+    <div class="col-8 offset-2">
+        <div class="card">
+            <img class="card-img-top"
+                 src="{% if post_detail.image %}{{post_detail.image.url}}{% else %}{% static 'img/kids1.jpeg' %}{% endif %}"
+                 alt="Card image cap" style="height:400px; object-fit:cover;">
+            <div class="card-body">
+                <h5 class="card-title">{{post_detail.title}}</h5>
+                <p class="card-text" style="height:100px;">{{post_detail.content}}</p>
+                <small>{{post_detail.timestamp}}</small>
+                <br>
+                {% if user.is_authenticated %}
+                <a href="{% url 'update_post' post_detail.pk %}" class="btn btn-outline-primary form-control mt-3">Update</a>
+                <a href="{% url 'delete_post' post_detail.pk %}"
+                   class="btn btn-outline-danger form-control mt-3">Delete</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

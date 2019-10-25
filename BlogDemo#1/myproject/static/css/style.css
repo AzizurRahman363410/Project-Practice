@@ -1,0 +1,19 @@
+body{
+	margin:0;
+	padding:0;
+}
+html{
+	
+}
+img{
+	width: 100%;
+	height: 400px;
+	object-fit: cover;
+}
+
+.active{
+  background-color:#09C6AE;
+  color:#fff;
+
+}
+

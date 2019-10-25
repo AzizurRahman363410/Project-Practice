@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>CDN Starter Template | Bootstrap 4 + Font Awesome 5</title>
+
+     <!-- favicon icon  -->
+    <link href="{% static 'img/favcon.png'%}" rel="icon" type="image/x-icon" />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <!-- Font-Awesome -->
+    <link rel="stylesheet" href=" https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+
+    <!-- Custom Stylesheet after this line -->
+    <link rel="stylesheet" type="text/css" href=" {% static 'css/style.css'%}">
+
+</head>
+
+<body>
+
+<div class="container py-5">
+    <h1 class="text-center py-5">Post Page Welcome</h1>
+        <div class="col-12">
+            <h3>{{post.title}}</h3>
+            <h5>Last updated: {{post.date_timeField}}</h5>
+            <h5>Category: {{post.category}} </h5>
+            <p>{{post.discription}}</p>
+            <img class="py-4 rounded" src="{{post.image.url}}" alt="">
+
+            <a class="link py-5" href="/">Back Home Page</a>
+        </div>
+    <div class="py-5"></div>
+    <div class="py-5"></div>
+    <div class="py-5"></div>
+    <div class="py-5"></div>
+</div>
+</body>
+</html>

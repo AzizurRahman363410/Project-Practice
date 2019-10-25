@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2 my-5">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+
+
+    <h5 class="text-center">Home page</h5>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <form action="{% url 'home' %}" method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="Submit" class="btn btn-info">
+
+            </form>
+        </div>
+    </div>
+
+    <hr>
+    <hr>
+
+
+    <div class="row mt-5">
+        <div class="col-6">
+            {% for post in posts %}
+
+            <h4>{{post.title}}</h4>
+            <h4>{{post.description}}</h4>
+            <hr>
+
+            {% endfor %}
+        </div>
+        <div class="col-6" id="post-container">
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+{% block js %}
+<script>
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+        var regexS = "[\\?&]" + name + "=([^&#]*)";
+        var regex = new RegExp(regexS);
+        var results = regex.exec(window.location.href);
+        if (results == null)
+            return "";
+        else
+            return decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    // search query
+
+    $(document).ready(function () {
+        console.log("Working")
+
+        var query = getParameterByName('q')
+
+        $.ajax({
+
+            url: "/api/",
+            method: "GET",
+            success: function (data) {
+                console.log('success');
+                $.each(data, function (key, value) {
+
+                    console.log(value.title);
+                    console.log(value.description);
+                    var title = value.title;
+                    var description = value.description;
+
+                    $("#post-container").append(`
+                            <h4>${title}</h4>
+                            <h4>${description}</h4>
+                            <hr>`
+                    )
+
+                });
+
+
+            },
+            error: function (data) {
+                console.log('Error');
+
+                console.log(data);
+
+            }
+        });
+
+
+    });
+
+</script>
+{% endblock js %}

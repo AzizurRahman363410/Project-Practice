@@ -1,0 +1,5 @@
+1. For your pakages which are used in your project
+pip freeze > requirements.text
+
+2.For installing your pakages which are used in your project
+pip install -r requirements.text
